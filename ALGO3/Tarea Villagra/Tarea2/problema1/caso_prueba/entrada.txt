@@ -1,0 +1,9 @@
+XWY
+ZX
+ZXY
+ZXW
+YWWX
+#
+
+salida:
+XZYW

@@ -1,0 +1,6 @@
+Ejercicio 5
+	a) El peor de los casos seria si se carga una serie de datos ordenados porque entonces el costo sería de "n" en vez de log(n), ya que se formaría una lista enlazada basicamente.
+	El mejor de los casos sería si se carga una serie de datos de tal manera que el BST quede balanceado porque entonces su costo sería de log(n).
+	En costo me refiero al costo de busqueda en el peor caso.
+
+	b ) Para evitar el peor caso, lo ideal seria balancear el BST (con esto me refiero a lograr la menor diferencia entre hijos de la izquierda y la derecha), asi entoncces siempre (o casi siempre) se lograra un costo de log(n).

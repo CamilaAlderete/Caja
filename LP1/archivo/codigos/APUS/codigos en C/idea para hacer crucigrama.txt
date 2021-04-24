@@ -1,0 +1,107 @@
+Para mi la pregunta más bien sería: ¿HAY algoritmos específicos para generar crucigramas??? No sé de alguno, aunque supongo que casi seguro en los libros de Knuth (especialmente “The Art of Computer Programming”) habrá al menos uno y muy bueno.
+
+Si A MÍ me pidieran un generador de crucigramas aleatorio, haría lo siguiente:
+
+1)Tomaría una lista de palabras, y con ellas crearía en memoria una estructura de diccionario que tenga apuntadores a todas las palabras, indizado por todas las letras que contienen
+2)Definiría una estructura de “matriz bidimensional deslizante” donde sólo se guardan las celdas que realmente tienen datos y una pequeña zona alrededor de estas (en vez de mapear TODO), similar a las que se usan para implementar el Juego de la vida sin que el consumo de memoria crezca exponencialmente conforme avanza la simulación.
+3)Tomaría al azar una palabra de las más largas, la pondría en la matriz en, digamos, posición horizontal inicialmente.
+4)Comienza la parte interesante:
+	a.Al azar seleccionaría una letra de esta palabra, la denominaría “letra de intersección”.
+	b.Seleccionar al azar otra palabra que contenga esta letra en algún punto. En la matriz deslizante trataría de acomodar esta palabra perpendicularmente a la orientación inmediata anterior (vertical en este ejemplo).
+		i.Antes de ir “escribiendo” cada celda con la letra de la palabra propuesta, verificaría que no tenga datos ya o, si los tiene, que sea la misma que buscamos poner ahí
+		ii.Si una celda ya tenía una letra y no es la que queremos escribir de acuerdo con la nueva palabra deseada, regresar al punto (b) y tomar otra palabra.
+		   Si después de un cierto número de intentos no se logra obtener una palabra adecuada para esa posición, se regresa al punto (a) y se selecciona otra letra con la que se trata de hallar un ajuste
+5)Se elige al azar entre las palabras existentes en el crucigrama hasta este momento (2, inicialmente) y regresar al punto (4) con esta palabra
+	a.Si se han hecho varios intentos ya de buscar palabras que se ajusten sobre distintas letras de esta palabra (ya ciclamos varias veces por el paso 4.b.i y no salimos) entonces regresamos al punto (5) y seleccionamos otra palabra para expandir el crucigrama
+6)Cuando se llegue al número de palabras deseado o la matriz final llegue al tamaño deseado, se detiene el algoritmo.
+
+No debiera ser demasiado difícil programar esto en ningún lenguaje de programación.
+
+#include <stdio.h>
+#include <string.h>
+char crucigrama[8][7]={'\0','\0','\0','W','\0','\0','\0','\0','\0','\0','I','\0','\0','\0','1','A','I','2','T','\0','\0','E','\0','\0','D','\0','\0','\0','G','\0','W','3','R','D','\0','A','\0','\0','W','\0','\0','\0','R','\0','\0','S','\0','\0','\0'};
+char f,c,letran,letraeva;
+char letra1,letra2,letra3;
+int c1=0,c2=0,c3=0;
+//int letraeva;
+int letra;
+
+int evaluar(letra)
+{	
+	printf("ingresa la letra %d: ",letra);
+	scanf("%*c%c",&letraeva);
+	printf("\n%c\n",letraeva);
+	return (letraeva);
+}
+
+main(void)
+{
+	printf("\n\n\n");
+	for(f=0; f<7; ++f)
+	{
+		for(c=0; c<6; ++c)
+			printf("%c\t",crucigrama[f][c]);
+		printf("\n");
+	}
+	printf("\n\n\n");
+	printf("¿Cual letra quieres escribir? ");
+	scanf("%d",&letra);
+	switch (letra)
+	{
+		case 1:
+		{
+			if (c1=0)
+			{
+				letra1='P';
+				evaluar(letra);
+				if ( int strcmp ( char *letra1, char *letraeva) == 0 );
+				{
+					crucigrama[3][1]='P';
+					c1=1;
+					break;
+				}
+				printf("Letra Incorrecta\n");
+				break;
+			}
+			else
+				break;
+		}
+		case 2:
+		{
+			if (c2=0)
+			{
+				letra2='N';
+				evaluar(letra);
+				if ( int strcmp ( char *letra2, char *letraeva) == 0 );
+				{
+					crucigrama[3][4]='N';
+					c1=1;
+					break;
+				}
+				printf("Letra Incorrecta\n");
+				break;
+			}
+			else
+				break;
+		}		
+		case 3:
+		{
+			if (c3=0)
+			{
+				letra3='O';
+				evaluar(letra);
+				if ( int strcmp ( char *letra3, char *letraeva) == 0 );
+				{
+					crucigrama[5][4]='O';
+					c1=1;
+					break;
+				}	
+				printf("Letra Incorrecta\n");
+				break;
+			}
+			else
+				break;
+		}
+
+	}
+	main();

@@ -1,0 +1,43 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<ctype.h>
+
+void supvocal(char tex[], tam);
+void consonant(char tex[], tam);
+
+int main()
+{
+    char text[100];
+    printf("\nIngrese el texto\n");
+    gets(text);
+    int tam = strlen(text);
+    supvocal(text,tam);
+    consonant(text, tam);
+
+    return 0;
+}
+void supvocal(char tex[], tam)
+{
+    char vocales[]={"aeiouyAEIOUY"};
+    int i, j;
+    for(i=0; i<tam; i++)
+    {
+        for(j=0; j<12; j++)
+        {
+            if(tex[i]==vocales[j])
+            {
+                tex[i] = " ";
+                
+            }
+        }
+    }
+}
+void consonant(char tex[], tam)
+{
+    int i;
+    for(i=0; i<tam; i++)
+    {
+            text[i] = tolower(text[i]);
+            printf(".%c",text[i]);
+    }
+}

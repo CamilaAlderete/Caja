@@ -1,0 +1,25 @@
+#incude<stdio.h>
+
+int main()
+{
+    int t, n, i, j, cont=0;
+    scanf("%d", &t);
+
+    while(cont!=t)
+    {
+        scanf("%d", &n);
+        int coord[5][3];
+        for(i=0; i<5; i++)
+        {
+            for(j=0; j<3; j++)
+            {
+                scanf("%d", coord[i][j]);
+            }
+        }
+        int dist_men;
+        int punt_op[3];
+
+    }
+
+    return 0,
+}

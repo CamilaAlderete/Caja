@@ -1,0 +1,53 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+void rotacion(char t1[], char t2[]);
+int main()
+{
+    char s1[10], s2[10];
+    gets(s1);
+    gets(s2);
+    rotacion(s1,s2);
+
+    return 0;
+}
+void rotacion(char t1[], char t2[])
+{
+    int tam1, tam2;
+    tam1=strlen(t1);
+    tam2=strlen(t2);
+    int i, j, cont1, cont2;
+    cont1=1, cont2=1;
+    if(tam2==tam1)
+    {
+        char pal[tam1];
+        while(cont2<=tam1-1)
+        {
+            for(i=cont2; i<tam1; i++)
+            {
+                pal[i] = t1[i];
+            }
+            for(j=0; j<cont2; j++)
+            {
+                pal[j] = t1[j];
+            }
+            for(i=0; i<tam2; i++)
+            {
+                if(t2[i]==pal[i])
+                {
+                    cont1++;
+                }
+            }
+            if(cont1==tam1)
+            {
+                printf("\nSI");
+            }
+            else
+            {
+                printf("\nNO");
+            }
+            cont2++;
+        }
+
+    }
+}
